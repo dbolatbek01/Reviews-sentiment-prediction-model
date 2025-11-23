@@ -1,0 +1,13 @@
+# виртуальное окружение
+.venv/
+
+# кэш питона
+__pycache__/
+*.pyc
+
+# большие данные
+data/Cell_Phones_and_Accessories_5.json
+
+# модели
+*.keras
+*.h5
