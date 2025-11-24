@@ -8,11 +8,8 @@ from keras.callbacks import EarlyStopping
 def create_model(vocab_size, max_len, embedding_dim):
     model = Sequential(
         [
-            Embedding(input_dim=vocab_size, output_dim=embedding_dim),
-            Bidirectional(LSTM(64, return_sequences=True)),
-            Dropout(0.5),
-            Bidirectional(LSTM(32)),
-            Dropout(0.3),
+            Embedding(input_dim=vocab_size, output_dim=64),
+            LSTM(32),
             Dense(1, activation="sigmoid"),
         ]
     )

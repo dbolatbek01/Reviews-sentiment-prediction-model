@@ -22,6 +22,30 @@ if __name__ == "__main__":
         data_path, vocab_size, max_len
     )
 
+    print("\n=== ПРОВЕРКА ОБУЧАЮЩИХ ДАННЫХ ===")
+    import pickle
+
+    with open("tokenizer.pickle", "rb") as f:
+        tokenizer = pickle.load(f)
+
+    reverse_word_index = {v: k for k, v in tokenizer.word_index.items()}
+
+    print("\n5 примеров НЕГАТИВА (класс 0):")
+    for i in range(5):
+        idx = np.where(y_train == 0)[0][i]
+        decoded = " ".join(
+            [reverse_word_index.get(t, "?") for t in X_train[idx] if t > 0]
+        )
+        print(f"{i+1}. {decoded[:80]}")
+
+    print("\n5 примеров ПОЗИТИВА (класс 1):")
+    for i in range(5):
+        idx = np.where(y_train == 1)[0][i]
+        decoded = " ".join(
+            [reverse_word_index.get(t, "?") for t in X_train[idx] if t > 0]
+        )
+        print(f"{i+1}. {decoded[:80]}")
+
     print(f"\nData shapes:")
     print(f"  Train: {X_train.shape}, Labels: {y_train.shape}")
     print(f"  Val:   {X_val.shape}, Labels: {y_val.shape}")

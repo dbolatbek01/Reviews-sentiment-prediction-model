@@ -18,21 +18,11 @@ stop_words = set(stopwords.words("english"))
 
 def clean_text(text):
     text = str(text).lower()
-
     text = re.sub(r"http\S+|www\S+", "", text)
     text = re.sub(r"[^a-z\s]", "", text)
 
-    tokens = text.split()
-
-    new_tokens = []
-
-    for word in tokens:
-        if word not in stop_words and len(word) > 2:
-            new_tokens.append(word)
-
-    tokens = new_tokens
-
-    return " ".join(tokens)
+    # ВСЁ! Больше ничего не удаляй!
+    return text
 
 
 def load_and_prepare_data(json_path, vocab_size=10000, max_len=120):
@@ -42,7 +32,7 @@ def load_and_prepare_data(json_path, vocab_size=10000, max_len=120):
     class_mapping = {
         1.0: 0,
         2.0: 0,
-        4.0: 1,
+        # 4.0: 1,
         5.0: 1,
     }
 
