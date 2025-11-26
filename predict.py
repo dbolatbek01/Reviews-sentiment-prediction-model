@@ -44,10 +44,10 @@ while True:
     score = prediction_probs[0][0]
 
     if score > 0.5:
-        predicted_class_index = 1  # ПОМЕНЯЛ!
+        predicted_class_index = 1  
         confidence = score * 100
     else:
-        predicted_class_index = 0  # ПОМЕНЯЛ!
+        predicted_class_index = 0 
         confidence = (1 - score) * 100
 
     predicted_class_name = class_names[predicted_class_index]

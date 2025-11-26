@@ -21,7 +21,7 @@ def clean_text(text):
     text = re.sub(r"http\S+|www\S+", "", text)
     text = re.sub(r"[^a-z\s]", "", text)
 
-    # ВСЁ! Больше ничего не удаляй!
+
     return text
 
 
